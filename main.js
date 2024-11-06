@@ -9,19 +9,20 @@ const generateEmail = () => {
             return response.json();
         })
         .then((data) => {
-            addRandomEmailToList(data.response);
+            emailList.innerHTML += `
+            <li> ${data.response} </li>`;
         });
 };
 
+// Funzione che aggiunge le email alla lista
+function addRandomEmailToList(cycles) {
+    for (let i = 0; i < cycles; i++) generateEmail();
+}
+
 // Dichiarazione variabili
 const emailList = document.getElementById("email-list");
+const resetEmailButton = document.getElementById("reset-email");
 let emailsNumber = 10;
 
-//Chiamo la funzione per aggiungere 1 email
-for (let i = 0; i < emailsNumber; i++) generateEmail();
-
-// Funzione che aggiunge le email alla lista
-function addRandomEmailToList(mail) {
-    emailList.innerHTML += `
-    <li> ${mail} </li>`;
-}
+//Chiamo la funzione per aggiungere N email
+addRandomEmailToList(emailsNumber);
