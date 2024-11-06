@@ -26,3 +26,9 @@ let emailsNumber = 10;
 
 //Chiamo la funzione per aggiungere N email
 addRandomEmailToList(emailsNumber);
+
+// Pulsante per cambiare le email
+resetEmailButton.addEventListener("click", () => {
+    emailList.innerHTML = ""; //Elimino le vecchie email
+    addRandomEmailToList(emailsNumber); //Scrivo le nuove
+});
